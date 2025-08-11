@@ -5,7 +5,6 @@ const analyzeBtn = document.getElementById('analyzeBtn');
 
 let currentLang = 'python';
 
-// Store code per language so it persists on switching
 const codeStore = {
   python: '',
   java: '',
@@ -85,7 +84,6 @@ function analyzeCodeRuntime(code, lang) {
   }
 }
 
-// --- Python analyzer (unchanged, no recursion detection) ---
 function analyzePython(code) {
   const lines = code.split('\n');
 
@@ -156,7 +154,6 @@ function analyzePython(code) {
     };
   }
 
-  // Here we just multiply nested loops, which works for Python indentation-based nesting
   let totalComplexity = '1';
 
   for (const c of complexityStack) {
@@ -183,19 +180,14 @@ function analyzePython(code) {
   };
 }
 
-// --- Java and C++ Analyzer with max over sequential loops and multiplication over nested loops ---
 function analyzeJavaCpp(code, langName) {
   const lines = code.split('\n');
 
-  // Stack of arrays: each element is an array representing the current block's loops complexities (e.g. nested loops inside that block)
-  // For nested loops: multiply complexities inside one array
-  // For sequential loops inside the same block: we keep track and take max complexity among them
-  let stack = [[]]; // start with root block
+  let stack = [[]];
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
 
-    // Detect loop starts
     if (line.startsWith('for(') || line.startsWith('for (') || line.startsWith('while(') || line.startsWith('while (')) {
       let isLog = false;
       let update = '';
@@ -236,16 +228,12 @@ function analyzeJavaCpp(code, langName) {
         }
       }
 
-      // Push a new block for this loop's nested content
-      // But first add the loop itself complexity (n or logn) to current block
       stack[stack.length - 1].push(isLog ? 'logn' : 'n');
-      stack.push([]); // new nested block for inner loops
+      stack.push([]);
     }
     else if (line === '}') {
-      // Closing a block: pop inner loops
       const innerLoops = stack.pop();
 
-      // Combine inner loops complexities by multiplying all (nested loops)
       let innerComplexity = '1';
       for (const c of innerLoops) {
         if (c === 1) continue;
@@ -253,15 +241,11 @@ function analyzeJavaCpp(code, langName) {
         else if ((innerComplexity === 'n' && c === 'logn') || (innerComplexity === 'logn' && c === 'n')) innerComplexity = 'n log n';
         else if (innerComplexity === 'n' && c === 'n') innerComplexity = 'n^2';
         else if (innerComplexity === 'logn' && c === 'logn') innerComplexity = '(log n)^2';
-        else innerComplexity = 'n^2'; // fallback for complex cases
+        else innerComplexity = 'n^2';
       }
 
-      // Replace last added loop complexity with multiplied complexity
-      // The last complexity on the outer block is the loop itself (the one for which this block was nested)
-      // Pop last, multiply it with innerComplexity, then push back
       let outerBlock = stack[stack.length - 1];
       if (outerBlock.length === 0) {
-        // No outer loop? Just push innerComplexity as a separate loop
         outerBlock.push(innerComplexity);
       } else {
         const last = outerBlock.pop();
@@ -273,8 +257,6 @@ function analyzeJavaCpp(code, langName) {
         else if (last === 'n' && innerComplexity === 'n') combined = 'n^2';
         else if (last === 'logn' && innerComplexity === 'logn') combined = '(log n)^2';
         else {
-          // If either is already a power or more complex string, just concatenate powers (simplified)
-          // For now fallback to n^2 for safety
           combined = 'n^2';
         }
 
@@ -283,10 +265,6 @@ function analyzeJavaCpp(code, langName) {
     }
   }
 
-  // Now stack[0] contains all top-level loops (sequential loops)
-  // We want to take the max complexity among them, not multiply
-
-  // Helper to convert complexity string to numeric order for comparison
   function complexityOrder(c) {
     if (c === '1') return 0;
     if (c === 'logn') return 1;
@@ -297,7 +275,6 @@ function analyzeJavaCpp(code, langName) {
     return 0;
   }
 
-  // Find max complexity by order
   let maxComplexity = '1';
   for (const c of stack[0]) {
     if (complexityOrder(c) > complexityOrder(maxComplexity)) {
@@ -305,7 +282,6 @@ function analyzeJavaCpp(code, langName) {
     }
   }
 
-  // Compose a readable explanation for maxComplexity
   let explanation = '';
   switch(maxComplexity) {
     case '1': explanation = 'No loops detected; constant time complexity.'; break;
