@@ -105,6 +105,21 @@ body {
   justify-content: center;
 }
 
+.instructions {
+  margin: 0rem 0 1.5rem 0rem;
+  color: var(--clr-text);
+  font-size: 0.85rem;
+  font-style: normal;
+  text-align: center;
+  user-select: none;
+  font-weight: 500;
+}
+
+.instructions span {
+  display: block;
+  margin-bottom: 0.3rem; /* control spacing */
+}
+
 .analyze-btn {
   padding: 0.9rem 2.4rem;
   font-size: 1.2rem;
