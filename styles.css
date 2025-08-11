@@ -1,12 +1,14 @@
 :root {
-  --clr-primary: #4a5fcc;
-  --clr-secondary: #6f8ddf;
-  --clr-bg: #1f2233;
-  --clr-bg-container: #2a2e4a;
-  --clr-text: #c4c8dd;
-  --clr-text-light: #7f86ab;
-  --clr-border: #3b4170;
+  --clr-primary: #1abc9c;       /* Vibrant teal */
+  --clr-primary-dark: #16a085;  /* Darker teal for hover/focus */
+  --clr-accent: #f1c40f;        /* Warm golden accent */
+  --clr-bg: #121417;            /* Almost black slate */
+  --clr-bg-container: #1b1e24;  /* Darker container */
+  --clr-text: #e0e3eb;          /* Soft white */
+  --clr-text-light: #9ca3b5;    /* Muted gray-blue for secondary text */
+  --clr-border: #2e3340;        /* Subtle border */
   --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-mono: 'Source Code Pro', monospace;
 }
 
 * {
@@ -30,8 +32,8 @@ body {
   width: 100%;
   background: var(--clr-bg-container);
   padding: 2rem 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 15px rgba(74, 95, 204, 0.15);
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
   display: flex;
   flex-direction: column;
   gap: 1.8rem;
@@ -43,18 +45,16 @@ body {
   font-size: 2.5rem;
   margin-bottom: 0;
   color: var(--clr-primary);
-  user-select: none;
+  letter-spacing: 0.5px;
 }
 
 .instructions {
-  background: #33385b;
+  background: #20242c;
   border-left: 5px solid var(--clr-primary);
   padding: 1rem 1.5rem;
   font-size: 0.95rem;
   color: var(--clr-text-light);
   border-radius: 8px;
-  user-select: none;
-  margin-bottom: 1rem;
 }
 
 .instructions ul {
@@ -79,22 +79,21 @@ body {
   border: 2px solid var(--clr-primary);
   background: transparent;
   color: var(--clr-primary);
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.25s ease;
-  user-select: none;
 }
 
 .lang-btn:hover {
   background: var(--clr-primary);
-  color: white;
+  color: var(--clr-bg-container);
 }
 
 .lang-btn.active {
   background: var(--clr-primary);
-  color: white;
+  color: var(--clr-bg-container);
   cursor: default;
-  box-shadow: 0 4px 10px rgba(74, 95, 204, 0.3);
+  box-shadow: 0 4px 12px rgba(26, 188, 156, 0.4);
 }
 
 .code-section textarea {
@@ -102,21 +101,21 @@ body {
   height: 260px;
   resize: vertical;
   padding: 1rem 1.2rem;
-  font-family: 'Source Code Pro', monospace;
+  font-family: var(--font-mono);
   font-size: 1rem;
   border-radius: 10px;
   border: 1.5px solid var(--clr-border);
-  background: #222741;
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+  background: #15181d;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);
   color: var(--clr-text);
-  transition: border-color 0.3s ease;
-  caret-color: var(--clr-secondary);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  caret-color: var(--clr-accent);
 }
 
 .code-section textarea:focus {
   outline: none;
-  border-color: var(--clr-secondary);
-  box-shadow: 0 0 8px rgba(111, 141, 223, 0.4);
+  border-color: var(--clr-accent);
+  box-shadow: 0 0 8px rgba(241, 196, 15, 0.4);
 }
 
 .action-section {
@@ -128,40 +127,37 @@ body {
   padding: 0.9rem 2.4rem;
   font-size: 1.2rem;
   font-weight: 700;
-  color: white;
-  background: var(--clr-secondary);
+  color: var(--clr-bg-container);
+  background: var(--clr-primary);
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: background 0.3s ease;
-  box-shadow: 0 4px 12px rgba(111, 141, 223, 0.3);
-  user-select: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(26, 188, 156, 0.4);
 }
 
 .analyze-btn:hover {
-  background: #5477db;
-  box-shadow: 0 6px 16px rgba(84, 119, 219, 0.5);
+  background: var(--clr-primary-dark);
+  box-shadow: 0 6px 18px rgba(26, 188, 156, 0.5);
 }
 
 .result-section {
-  background: #2e3353;
+  background: #1a1d25;
   padding: 1.5rem 2rem;
   border-radius: 10px;
   min-height: 140px;
-  box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.3);
-  font-family: 'Source Code Pro', monospace;
-  font-size: 1.1rem;
+  box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.4);
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
   white-space: pre-wrap;
   color: var(--clr-text);
-  user-select: text;
 }
 
 .result-section h2 {
   margin-top: 0;
   margin-bottom: 1rem;
   font-weight: 700;
-  color: var(--clr-secondary);
-  user-select: none;
+  color: var(--clr-accent);
 }
 
 @media (max-width: 480px) {
