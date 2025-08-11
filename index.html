@@ -1,45 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Complexity Checker</title>
-<link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Runtime Complexity Checker</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="main.js" defer></script>
 </head>
 <body>
-  <main class="container">
-    <h1 class="title">Complexity Checker</h1>
+  <div class="container">
+    <h1 class="title">Runtime Complexity Checker</h1>
 
-    <section class="instructions" aria-label="Usage instructions">
-      <p><strong>Instructions:</strong></p>
-      <ul>
-        <li>Use <code>n</code> to represent input size in loops.</li>
-        <li><code>for i in range(n):</code> is <em>linear</em> <code>O(n)</code>.</li>
-      </ul>
-    </section>
+    <div class="lang-select">
+      <button class="lang-btn active" data-lang="Python">Python</button>
+      <button class="lang-btn" data-lang="Java">Java</button>
+      <button class="lang-btn" data-lang="C">C</button>
+      <button class="lang-btn" data-lang="C++">C++</button>
+    </div>
 
-    <section class="lang-select">
-      <button class="lang-btn active" data-lang="python">Python</button>
-      <button class="lang-btn" data-lang="java">Java</button>
-      <button class="lang-btn" data-lang="cpp">C++</button>
-    </section>
+    <div class="code-section">
+      <textarea placeholder="Paste your code here..." id="codeInput"></textarea>
+    </div>
 
-    <section class="code-section">
-      <textarea id="codeArea" spellcheck="false" placeholder="Paste your code here..."></textarea>
-    </section>
+    <div class="action-section">
+      <button class="analyze-btn" id="analyzeBtn">Analyze</button>
+    </div>
 
-    <section class="action-section">
-      <button id="analyzeBtn" class="analyze-btn">Analyze Runtime</button>
-    </section>
-
-    <section class="result-section" aria-live="polite">
-      <h2>Analysis Result</h2>
-      <div id="result" class="result-output">
-        Paste your code and click analyze to see estimated runtime complexity.
-      </div>
-    </section>
-  </main>
-
-  <script src="app.js"></script>
+    <div class="result-section" id="resultSection">
+      <h2>Result</h2>
+      <pre id="resultText">Your runtime complexity will appear here.</pre>
+    </div>
+    
+  </div>
 </body>
 </html>

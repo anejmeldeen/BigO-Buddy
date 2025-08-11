@@ -1,12 +1,12 @@
 :root {
-  --clr-primary: #1abc9c;       /* Vibrant teal */
-  --clr-primary-dark: #16a085;  /* Darker teal for hover/focus */
-  --clr-accent: #f1c40f;        /* Warm golden accent */
-  --clr-bg: #121417;            /* Almost black slate */
-  --clr-bg-container: #1b1e24;  /* Darker container */
-  --clr-text: #e0e3eb;          /* Soft white */
-  --clr-text-light: #9ca3b5;    /* Muted gray-blue for secondary text */
-  --clr-border: #2e3340;        /* Subtle border */
+  --clr-primary: #1abc9c;
+  --clr-primary-dark: #16a085;
+  --clr-accent: #f1c40f;
+  --clr-bg: #121417;
+  --clr-bg-container: #1b1e24;
+  --clr-text: #e0e3eb;
+  --clr-text-light: #9ca3b5;
+  --clr-border: #2e3340;
   --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   --font-mono: 'Source Code Pro', monospace;
 }
@@ -48,24 +48,6 @@ body {
   letter-spacing: 0.5px;
 }
 
-.instructions {
-  background: #20242c;
-  border-left: 5px solid var(--clr-primary);
-  padding: 1rem 1.5rem;
-  font-size: 0.95rem;
-  color: var(--clr-text-light);
-  border-radius: 8px;
-}
-
-.instructions ul {
-  padding-left: 1.3rem;
-  margin: 0.4rem 0 0 0;
-}
-
-.instructions li {
-  margin-bottom: 0.35rem;
-}
-
 .lang-select {
   display: flex;
   justify-content: center;
@@ -93,7 +75,7 @@ body {
   background: var(--clr-primary);
   color: var(--clr-bg-container);
   cursor: default;
-  box-shadow: 0 4px 12px rgba(26, 188, 156, 0.4);
+  box-shadow: 0 4px 12px rgba(26, 188, 156, 0.2);
 }
 
 .code-section textarea {
@@ -138,26 +120,37 @@ body {
 
 .analyze-btn:hover {
   background: var(--clr-primary-dark);
-  box-shadow: 0 6px 18px rgba(26, 188, 156, 0.5);
+  box-shadow: 0 6px 18px rgba(26, 188, 156, 0.2);
 }
 
 .result-section {
   background: #1a1d25;
-  padding: 1.5rem 2rem;
+  padding: 0rem 2rem;
   border-radius: 10px;
-  min-height: 140px;
+  max-height: 300px;        /* max height to limit size */
   box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.4);
   font-family: var(--font-mono);
   font-size: 1.05rem;
-  white-space: pre-wrap;
   color: var(--clr-text);
+  line-height: 1.4;
+  border: 1px solid var(--clr-border);
+  overflow-y: auto;         /* scroll only if needed */
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .result-section h2 {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
   font-weight: 700;
   color: var(--clr-accent);
+}
+
+.result-section pre {
+  margin: 0;
+  font-family: var(--font-mono);
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 @media (max-width: 480px) {
