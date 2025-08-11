@@ -7,7 +7,7 @@ from flask_cors import CORS
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})  # Allow all origins for testing
+CORS(app, resources={r"/*": {"origins": "https://anejmeldeen.github.io"}})
 
 @app.route("/analyze", methods=["POST", "OPTIONS"])
 def analyze():

@@ -26,7 +26,7 @@ analyzeBtn.addEventListener('click', () => {
 
   resultText.textContent = `Analyzing ${selectedLang} code...\n\nPlease wait...`;
 
-  fetch('http://127.0.0.1:5000/analyze', {
+  fetch('https://complexitychecker.onrender.com/analyze', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
