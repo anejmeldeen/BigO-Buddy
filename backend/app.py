@@ -7,7 +7,10 @@ from flask_cors import CORS
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "https://anejmeldeen.github.io"}})
+CORS(app, resources={r"/*": {"origins": "https://anejmeldeen.github.io"}},
+     allow_headers=["Content-Type", "Authorization"],
+     methods=["GET", "POST", "OPTIONS"],
+     supports_credentials=True)
 
 @app.route("/analyze", methods=["POST", "OPTIONS"])
 def analyze():
