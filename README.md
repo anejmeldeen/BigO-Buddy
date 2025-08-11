@@ -7,7 +7,7 @@ Uses variable and code structure to estimate the runtime complexity of your algo
 <table style="border-collapse: collapse;">
   <tr>
     <td style="border: none; padding: 0;">
-      <img src="images/dashboard1.png" alt="Screenshot 1" width="500" />
+      <img src="dashboard1.png" alt="Screenshot 1" width="500" />
     </td>
   </tr>
 </table>
