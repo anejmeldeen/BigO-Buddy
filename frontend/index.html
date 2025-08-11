@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Runtime Analyzer — Pure JS</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1 class="title">Runtime Analyzer</h1>
+
+    <section class="instructions" aria-label="Usage instructions">
+      <p><strong>Instructions:</strong></p>
+      <ul>
+        <li>Use <code>n</code> to represent input size in loops.</li>
+        <li><code>for i in range(n):</code> is <em>linear</em> <code>O(n)</code>.</li>
+      </ul>
+    </section>
+
+    <section class="lang-select">
+      <button class="lang-btn active" data-lang="python">Python</button>
+      <button class="lang-btn" data-lang="java">Java</button>
+      <button class="lang-btn" data-lang="cpp">C++</button>
+    </section>
+
+    <section class="code-section">
+      <textarea id="codeArea" spellcheck="false" placeholder="Paste your code here..."></textarea>
+    </section>
+
+    <section class="action-section">
+      <button id="analyzeBtn" class="analyze-btn">Analyze Runtime</button>
+    </section>
+
+    <section class="result-section" aria-live="polite">
+      <h2>Analysis Result</h2>
+      <div id="result" class="result-output">
+        Paste your code and click analyze to see estimated runtime complexity.
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

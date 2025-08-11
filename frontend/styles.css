@@ -1,0 +1,185 @@
+:root {
+    --clr-primary: #4a5fcc;       /* darker medium blue */
+    --clr-secondary: #6f8ddf;     /* softer blue */
+    --clr-bg: #1f2233;            /* very dark navy */
+    --clr-bg-container: #2a2e4a;  /* dark indigo-blue */
+    --clr-text: #c4c8dd;          /* softer light gray */
+    --clr-text-light: #7f86ab;    /* muted blue-gray */
+    --clr-border: #3b4170;        /* darker muted blue */
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: var(--font-main);
+    background: var(--clr-bg);
+    color: var(--clr-text);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+  
+  .container {
+    max-width: 700px;
+    width: 100%;
+    background: var(--clr-bg-container);
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(74, 95, 204, 0.15); /* lighter, smaller shadow */
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+  
+  .title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 0;
+    color: var(--clr-primary);
+    user-select: none;
+  }
+  
+  .instructions {
+    background: #33385b;
+    border-left: 5px solid var(--clr-primary);
+    padding: 1rem 1.5rem;
+    font-size: 0.95rem;
+    color: var(--clr-text-light);
+    border-radius: 8px;
+    user-select: none;
+    margin-bottom: 1rem;
+  }
+  
+  .instructions ul {
+    padding-left: 1.3rem;
+    margin: 0.4rem 0 0 0;
+  }
+  
+  .instructions li {
+    margin-bottom: 0.35rem;
+  }
+  
+  .lang-select {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .lang-btn {
+    padding: 0.6rem 1.6rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 2px solid var(--clr-primary);
+    background: transparent;
+    color: var(--clr-primary);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    user-select: none;
+  }
+  
+  .lang-btn:hover {
+    background: var(--clr-primary);
+    color: white;
+  }
+  
+  .lang-btn.active {
+    background: var(--clr-primary);
+    color: white;
+    cursor: default;
+    box-shadow: 0 4px 10px rgba(74, 95, 204, 0.3); /* reduced glow */
+  }
+  
+  .code-section textarea {
+    width: 100%;
+    height: 260px;
+    resize: vertical;
+    padding: 1rem 1.2rem;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1.5px solid var(--clr-border);
+    background: #222741;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+    color: var(--clr-text);
+    transition: border-color 0.3s ease;
+    caret-color: var(--clr-secondary);
+  }
+  
+  .code-section textarea:focus {
+    outline: none;
+    border-color: var(--clr-secondary);
+    box-shadow: 0 0 8px rgba(111, 141, 223, 0.4); /* softer glow */
+  }
+  
+  .action-section {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .analyze-btn {
+    padding: 0.9rem 2.4rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    background: var(--clr-secondary);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 12px rgba(111, 141, 223, 0.3); /* lighter shadow */
+    user-select: none;
+  }
+  
+  .analyze-btn:hover {
+    background: #5477db;
+    box-shadow: 0 6px 16px rgba(84, 119, 219, 0.5);
+  }
+  
+  .result-section {
+    background: #2e3353;
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+    min-height: 140px;
+    box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.3);
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1.1rem;
+    white-space: pre-wrap;
+    color: var(--clr-text);
+    user-select: text;
+  }
+  
+  .result-section h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: var(--clr-secondary);
+    user-select: none;
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding: 1.5rem 1.6rem;
+    }
+    .code-section textarea {
+      height: 180px;
+    }
+    .analyze-btn {
+      width: 100%;
+    }
+    .lang-select {
+      flex-wrap: wrap;
+    }
+    .lang-btn {
+      flex: 1 1 30%;
+      text-align: center;
+    }
+  }
+  
