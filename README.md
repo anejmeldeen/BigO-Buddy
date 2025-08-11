@@ -1,2 +1,21 @@
 # Complexity Checker
-Analyzes snippes of Python, Java, and C++ to estimate the runtime-complexity of an algorithm in big O notation.
+### Webpage can be found [here](https://codeforcestracker.com)
+
+Complexity Checker is a tool that analyzes snippets of code in Python, Java, and C++
+Uses variable and code structure to estimate the runtime complexity of your algorithm.
+
+<table style="border-collapse: collapse;">
+  <tr>
+    <td style="border: none; padding: 0;">
+      <img src="images/dashboard1.png" alt="Screenshot 1" width="500" />
+    </td>
+  </tr>
+</table>
+
+## Features:
+- Instant analysis of runtime
+- Short explanation of code structure
+
+## Technologies Used:
+- HTML, CSS, Javascript
+- NodeJS
